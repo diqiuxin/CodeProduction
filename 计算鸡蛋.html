@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>篮子的小鸡蛋</title>
+		<style type="text/css">
+			.main{
+				width: 285px;
+				background-color: rgba(2,2,5,0.1);
+			}
+			.B_1{
+				color:darkmagenta ;
+			}
+			.DQX{
+				color: rgba(45,100,100,0.8);
+			}
+		</style>
+	</head>
+	<body>
+		<h1>我爱吃鸡蛋^_^</h1>
+		<fieldset class="main" >
+			<legend>不知道吃了多少个</legend>
+			
+			<lable>每口1个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="0"/>
+			
+			<lable>每口2个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="1"/>
+			
+			<lable>每口3个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="0"/>
+			
+			<lable>每口4个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="1"/>
+			
+			<lable>每口5个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="-1"/>
+			
+			<lable>每口6个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="3"/>
+			
+			<lable>每口7个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="0"/>
+			
+			<lable>每口8个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="1"/>
+			
+			<lable>每口9个蛋还剩：</lable>
+			<input class="leaveEgg" type="text" placeholder="input" value="0"/>
+			
+			<lable>查找的鸡蛋范围:</lable>
+			<input class="rangeEgg" type="text" placeholder="自己设置个查找范围呗~" value=""/>
+			<p> 
+			注：以上剩余鸡蛋的数量情况可自己设定，剩下的为正，缺少的为负。
+			</p>
+			<input id="button" type="button" onclick="funEGG()" value="一共吃了多少蛋" />
+		</fieldset><br>
+		<fieldset class="main" >
+			<legend>看看我吃了多少个</legend>
+			<h4>我的小鸡蛋总数：<h2 class="EGG">0</h2></h4>
+		</fieldset>
+		
+		<script type="text/javascript">
+		
+			var button=document.getElementById('button');
+			button.onchange=funEGG();
+
+			function funEGG(){ 
+				var list_leaveEgg=document.getElementsByClassName("leaveEgg"),
+					rangeEgg=document.getElementsByClassName("rangeEgg")[0].value,
+					endEgg=document.getElementsByClassName("EGG")[0];
+				endEgg.textContent=fun(list_leaveEgg,rangeEgg);				
+			}
+			
+			function fun(list,range){
+				var string="", 
+					length=list.length;
+
+			   	for(var i=1;i<range;i++){
+			   		var j,
+			   			x=1; 
+			   		for(j=0;(j<length)&&(x==1);){
+			   			x=0; //仅仅做为进入“if”的标记
+			   			if((i-list[j++].value)%j==0){x=1};
+			   		}
+			   		if((j==length)&&(x==1)) string=string+"|"+i;
+	   			} 
+				
+				return string+'|';
+			}
+	    /*   初级内核
+	   	var egg;
+	   	for(egg=1;egg<2000;egg++){
+	   		if((egg-0)%1==0)
+	   		if((egg-1)%2==0)
+	   		if((egg-0)%3==0)
+	   		if((egg-1)%4==0)
+	   		if((egg+1)%5==0)
+	   		if((egg-3)%6==0)
+	   		if((egg-0)%7==0)
+	   		if((egg-1)%8==0)
+	   		if((egg-0)%9==0)
+	   		alert(egg);	//弹出结果 
+	   	}
+	   	/*
+	   	 * 时间有限，我先这么写，晚上回来再弄
+	   	 * 此范围的结果 1449  3969 6489 9009
+	   	 */
+	    
+		</script>
+		<p class="DQX"> 欢迎交流  <a href="">点击查看源代码</a> </p>
+		<p class="DQX"> 如有发现bug请  @地球心 </p>
+	</body>
+</html>
