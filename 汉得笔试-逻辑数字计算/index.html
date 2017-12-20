@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>汉得逻辑数字计算</title>
+</head>
+<body>
+	<script src="./main.js"></script>
+	<script src="https://unpkg.com/vue"></script>
+	<!-- html section -->
+  <center>
+		<div id="divID" style="background-color:rgba(50,102,106,0.2);width:300px;height:720px;">
+	    <h2>题目：</h2>
+	    <!-- 输入 -->
+	    <ul v-for="obj in input">
+	      <li>
+	        <input type="text" v-model="obj.number" style="width: 100px;">
+	        <input type="text" v-model="obj.ab" style="width: 40px">
+	      </li>
+	    </ul>
+	    <!-- 输入数据展示 -->
+	    <ul v-for="item in input" v-if="item.number!=''">
+	      <li><span>{{item.number}}</span>---<span>{{item.ab[0]}}A{{item.ab[1]}}B</span></li>
+	    </ul>
+	      <!-- 计算结果 -->
+	    <button v-on:click="ji_suan">开始计算</button>
+	    <p>{{asd}}</p>
+	    <p>{{output}}</p>
+		</div>
+	</center>
+	<!-- Vue section -->
+	<script>
+		var vm = new Vue({
+			el: "#divID",
+			data: {
+				input: [
+					{number: '',ab: ''},
+					{number: '',ab: ''},
+					{number: '',ab: ''},
+					{number: '',ab: ''},
+					{number: '',ab: ''},
+					{number: '',ab: ''}
+				],
+				output: "准备就绪可以开始计算",
+				asd: ""
+			},
+			methods: {
+				ji_suan: function(){
+					let jg;
+
+          if(this.input[0].number == ''){
+          	this.asd = "";
+          	jg = '输入不完整，请重新输入';
+          }else{
+          	this.asd = this.input;
+          	this.output = "后台CPU疯狂计算中......";
+          	jg = window.function_main(this.input);
+          }
+          this.output = jg;
+				}
+			}
+		});
+	</script>
+
+
+</body>
+</html>
