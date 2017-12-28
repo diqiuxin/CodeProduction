@@ -13,7 +13,7 @@ body{
 kbd{
   display: inline-block;
   background-color: white;
-  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 3px solid #DDD;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.7);
   width: 60px;
@@ -25,10 +25,41 @@ kbd{
   position: relative;
 
 }
+.kbdClass{
+  background-color: white;
+}
+kbd:hover{
+  border-bottom: 0px solid #DDD;
+}
 kbd > button{
-  border: 1px solid blue;
+  border: none;
+  background-color: orange;
+  border-radius: 3px;
+  color: white;
   font-weight: bold;
   position: absolute;
-  bottom: 0px;
+  bottom: 5px;
   right: 5px;
+  width: 15px;
+  display: none;
+
 }
+kbd:hover > button{
+  display: block;
+}
+kbd > button:hover{
+  background-color: black;
+}
+
+/* 后期美化 text styles
+.text span{
+  display: inline-block;
+  width: 15px;
+  height: 15px; 
+}
+.text > .text_1 > span{
+  background-color: white;
+}
+.text > .text_2 > span{
+  background-color: rgb(179, 179, 179);
+} */
