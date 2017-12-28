@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bookmarks</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./main.js"></script>
+</head>
+<body>
+  <div>
+    <div id="bookmarksMain">
+    </div>
+  </div>
+
+  <!-- 生成 html element 的 script -->
+  <script>
+    for (let index = 0; index < keys.length; index++) {
+      const div = document.createElement("div");
+      for(let value of keys[index]){
+        const kbd = document.createElement("kbd");
+        kbd.textContent = value;
+        kbd.onclick = function(s){
+          console.log(s.target.children[0].id);
+          openKeyUrl(s.target.children[0].id);
+        }
+        const button = document.createElement("button");
+        button.textContent = "E";
+        button.id = value;
+        button.onclick = function(event){
+          let hash_key = event.target.id;
+          let hash_value = prompt("输入自定义的网址:");
+          hash[hash_key] = hash_value;
+          localStorage.setItem("hashStr",JSON.stringify(hash)); 
+        }
+        kbd.appendChild(button); 
+        div.appendChild(kbd);
+        // console.log(value);
+      }
+      bookmarksMain.appendChild(div);
+    }
+  </script>
+</body>
+</html>
