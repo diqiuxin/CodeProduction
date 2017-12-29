@@ -9,6 +9,20 @@
   <script src="./main.js"></script>
 </head>
 <body>
+  <nav>
+    <div class="clearfix">
+      <div class="nav-logo">
+        
+        <img src="./0.jpg" alt="logo">
+        <h1>Bookmarks</h1>
+      </div>
+      <div class="nav-text">
+        <input type="text" name="input" id="inputText">
+        <button id="inputB">百度一下</button>
+        <button id="inputG">谷歌一下</button>  
+      </div>
+    </div>
+  </nav>
   <div>
     <div id="bookmarksMain">
     </div>
@@ -18,6 +32,12 @@
     <p class="text_1">已经有链接的按钮显示为<span></span></p>
     <p class="text_2">暂时没有链接的按钮显示为<span></span></p>
   </div> -->
+
+  <footer>
+    <div>
+      <p>由<a href="http://www.diqiuxin.top" alt="个人站点链接">地球心</a>提供维护支持</p>
+    </div>
+  </footer>
   <!-- 生成 html element 的 script -->
   <script>
     for (let index = 0; index < keys.length; index++) {
@@ -43,6 +63,12 @@
         // console.log(value);
       }
       bookmarksMain.appendChild(div);
+    }
+  </script>
+  <script>
+    inputB.onclick = function(){
+      let str = inputText.value;
+      window.open("http://www.baidu.com/s?wd="+str , "_blank") 
     }
   </script>
 </body>

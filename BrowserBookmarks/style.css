@@ -5,6 +5,53 @@
 body{
   background-color: #F2F2F2; 
 }
+.clearfix{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+nav,.nav-text,.nav-logo{
+  /* border: 1px solid red; */
+}
+nav {
+  background-color: black;
+}
+nav .nav-logo{
+  margin-left: 300px;
+  display: inline-block;
+}
+nav .nav-logo > img{
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+}
+nav .nav-logo > h1{
+  color: rgb(112, 111, 111);
+  display: inline-block;
+  font-size: 40px;
+  vertical-align: bottom;
+  margin-left: 215px; 
+}
+nav .nav-text{
+  display: inline-block;
+  float: right;
+  margin: 50px 200px 0px 0px;
+}
+nav .nav-text > input{
+  height: 20px;
+}
+nav .nav-text > button,
+nav .nav-text > input{
+  margin: 0px 5px;
+  padding: 2px 5px;
+  color: white;
+  background-color: #474545;
+  border: none;
+  border-radius: 3px; 
+}
+
+
 
 #bookmarksMain{
   margin: 100px 0;
@@ -63,3 +110,13 @@ kbd > button:hover{
 .text > .text_2 > span{
   background-color: rgb(179, 179, 179);
 } */
+
+
+footer > div{
+  background-color: white;
+  text-align: center;
+  line-height: 50px;
+}
+footer > div a{
+  text-decoration-line: none;
+}
