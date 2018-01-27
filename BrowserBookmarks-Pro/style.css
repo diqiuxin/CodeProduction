@@ -1,0 +1,51 @@
+*{margin: 0;padding: 0;}
+body{background-color: #F2F2F2;background-image: url(./img/bg-image.jpg);background-size: 100% 100%;}
+.clearfix{content: "";display: block;clear: both;}
+
+nav {background-color: rgba(255,255,255,0.3);height: 7vh;}
+nav .nav-logo{margin-left: 300px;display: inline-block;}
+nav .nav-logo > h1{color: #111;display: inline-block;font-size: 50px;vertical-align: bottom;margin-left: 215px; }
+/*
+nav .nav-text{display: inline-block;float: right;margin: 20px 200px 0px 0px;}
+nav .nav-text > input{height: 30px;}
+nav .nav-text > button{height: 36px;}
+nav .nav-text > button,
+nav .nav-text > input{margin: 0px 5px;padding: 2px 5px;color: white;background-color: #474545;border: none;border-radius: 3px; }
+*/
+
+.main{
+  height: 87.8vh;/* viewport height 视窗高度 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#bookmarksMain{text-align: center;border-radius: 10px;background: rgba(255,255,255,0.3);padding: 25px;}
+kbd{
+  display: inline-flex;
+  background: linear-gradient(to bottom, #292929 0%,#111 100%);
+  border-bottom: 1px solid #373737;
+  border-top: 2px solid #373737;  
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1a1b1c;
+  width: 70px;
+  height: 62px;
+  margin: 8px 8px;
+  position: relative;
+  color: #c5c5c5;
+  font-family: unset;
+  font-size: 25px; 
+  text-transform: uppercase; 
+}
+kbd:hover{border-bottom: 0px solid #1a1b1c;border-top: 0px solid #1a1b1c;}
+
+kbd > span{position: absolute;top: 0;left: 4px;}
+kbd .favicon{width: 20px;height: 20px;border-radius: 50%;position: absolute;left: 5px;bottom: 5px;}
+kbd > button{border:none;background-color: orange;border-radius: 3px;color: white;font-weight: bold;
+  position: absolute;bottom: 5px;right: 5px;width: 15px;display: none;
+}
+kbd:hover > button{display: block;}
+kbd > button:hover{background-color: black;}
+
+footer > div{height: 5.25vh;text-align: center;line-height: 30px;font-size: 18px;color: white;}
+footer > div a{text-decoration-line: none;}

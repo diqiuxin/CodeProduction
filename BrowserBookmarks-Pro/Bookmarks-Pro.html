@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>bookmarks</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./main.js"></script>
+</head>
+<body>
+  <!-- 导航条 -->
+  <nav>
+    <div class="clearfix">
+      <div class="nav-logo">
+        <h1>Bookmarks</h1>
+      </div>
+      <!-- <div class="nav-text">
+        <input type="text" name="input" id="inputText">
+        <button id="inputB">百度一下</button>
+        <button id="inputG">谷歌一下</button>  
+      </div> -->
+    </div>
+  </nav>
+  <!-- 键盘 -->
+  <div class="main" id="bookmarks">
+    <div id="bookmarksMain">
+    </div>
+  </div>
+  <!-- 底部说明 -->
+  <footer>
+    <div>
+      <p>由<a href="http://www.diqiuxin.top" alt="个人站点链接">地球心</a>提供维护支持
+        <a id="help" href="#" alt="help" id="help">  帮助</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- 生成 html element 的 script -->
+  <!-- 生成键盘 script -->
+  <script>
+    //生成键盘
+    for (let index = 0; index < keys.length; index++) {
+      //创建键盘模块
+      const div = createElement("div");
+      for(let value of keys[index]){
+
+        //键盘按键
+        const kbd = createElement("kbd",{"onclick": function(event){
+          openKeyUrl(event.target.children[0].id);
+        }});
+        
+        //键盘字母创建
+        const span = createElement("span",{"textContent": value});
+       
+        //键盘对应的图标 favicon
+        const favicon = createElement("img",{"className":"favicon"});
+        if(hash[value]){
+          favicon.src = `http://${hash[value]}/favicon.ico`;
+        }else{
+          favicon.src = './img/favicon.jpg';
+        }
+        faviconOnerror(favicon); 
+        
+        //键盘对应的“E”修改按键
+        const button = createElement("button",{"textContent": "E","id": value});
+        button.onclick = function(event){
+          let hash_key = event.target.id;
+          let hash_value = prompt("输入自定义的网址:");
+          hash[hash_key] = hash_value;
+          //存储自定义的网址
+          localStorage.setItem("hashStr",JSON.stringify(hash)); 
+          let favicon = event.target.previousElementSibling;
+          favicon.src = `http://${hash_value}/favicon.ico`;
+          faviconOnerror(favicon);
+        }
+        
+        //添加元素到对应的父节点（组装键盘的各个模块）
+        kbd.appendChild(span);
+        kbd.appendChild(favicon);
+        kbd.appendChild(button); 
+        div.appendChild(kbd);
+      }
+
+      //添加创建好的键盘到窗口
+      bookmarksMain.appendChild(div);
+    }
+
+    // document 范围检测键盘按键
+    document.onkeypress = function(keypress){
+      let key = keypress.key;
+      openKeyUrl(key);
+    }
+
+
+    //自定义函数
+    //创建元素，设置属性
+    function createElement(elementName,att){
+      let element = document.createElement(elementName);
+      for(let key in att){
+        element[key] = att[key]
+      }
+      return element;
+    }  
+    //favicon 图标下载出错处理
+    function faviconOnerror(_favicon){
+        _favicon.onerror = function(event){
+        console.log('favicon 图标下载失败');
+        event.target.src = './img/favicon.jpg';
+      }
+    }
+    // 通过按键打开对应的 URL
+    function openKeyUrl(_key){
+      let _website = hash[_key]; 
+      console.log(_key, "http://"+_website);
+      // localtion.href = "http://" + website;
+      window.open("http://"+_website , "_blank")
+    }
+  </script>
+
+  <!-- 按键 script-->
+  <script>
+    // //导航条“百度一下”的按键
+    // inputB.onclick = function(){
+    //   let str = inputText.value;
+    //   window.open("http://www.baidu.com/s?wd="+str , "_blank") 
+    // }
+    // //导航条“谷歌一下”的按键
+    // inputG.onclick = function(){
+    //   let str = inputText.value;
+    //   window.open("https://www.google.co.uk/search?q="+str , "_blank") 
+    // }
+    
+    //底部“帮助”的按键
+    help.onclick = function(){
+      alert(`
+        1.使用谷歌搜索需要破墙（你懂）.
+        2.每次自定义后需要F5刷新一下,自定义才会生效 .
+        3.用来简化你的浏览器的书签 .
+      `);
+    }
+  </script>
+</body>
+</html>
