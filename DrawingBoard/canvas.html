@@ -2,18 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Cnavas</title>
   <link rel="stylesheet" href="./style.css">
-  
+  <!-- Iconfont 引用代码 -->
+  <style type="text/css">
+    .icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
+  </style>
 </head>
 <body>
-  <canvas id="canvas" ></canvas>
-  <div class="hb-eraser">
-    <button id="hb">画笔</button>
-    <button id="eraser">橡皮擦</button>
+  <canvas id="canvas"></canvas>
+  <div class="pen-eraser">
+    <svg id="pen" class="active">
+        <use xlink:href="#icon-pen"></use>
+    </svg>
+    <svg id="eraser" class="">
+        <use xlink:href="#icon-eraser"></use>
+    </svg>
+    <svg id="delete" class="">
+        <use xlink:href="#icon-LC_icon_delete_line_1"></use>
+    </svg>
+    <svg id="download" class="">
+        <use xlink:href="#icon-download"></use>
+    </svg>
+  </div>
+  <div class="pen-width">
+    <!-- 画笔宽度 -->
+    <svg id="pen-thick" class="">
+        <use xlink:href="#icon-line-copy-copy"></use>
+    </svg>
+    <svg id="pen-medium" class="active">
+        <use xlink:href="#icon-line-copy"></use>
+    </svg>
+    <svg id="pen-fine" class="">
+        <use xlink:href="#icon-line"></use>
+    </svg>
+  </div>
+  <div class="colorDiv">
+    <!-- 画笔色块区域 -->
   </div>
   <script src="./canvas-main.js"></script>
+  <script src="http://at.alicdn.com/t/font_557859_2s3uyqahdwfp3nmi.js"></script>
 </body>
 </html>

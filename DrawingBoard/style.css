@@ -8,15 +8,81 @@
 }
 body{
   position: raletive;
+  overflow: hidden;
 }
-.hb-eraser{
-  display: inline-block;
+
+/* 按键 */
+/* 按键定位 */  
+.pen-eraser{
   position: fixed;
-  bottom: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
 }
-#hb,#eraser{
-  margin: 0px 5px;
-  padding: 0px 5px;
-  
+
+/* 按键样式 */
+#pen,#eraser,#delete,#download{
+  padding: 5px;
+  margin: 0px 2px;
+  width: 25px;
+  height: 25px;
+  border-radius: 30%;
+  background-color: whitesmoke;
+  /* 过渡慢放 0.3s */
+  transition: all 0.3s;
 }
+
+/* 按键动画 */
+.pen-eraser .active{
+  fill: red;
+  transform: scale(1.12);
+}
+
+/* 颜色区域 */
+.colorDiv{
+  position: fixed;
+  top: 50px;
+  left: 10px;
+  transform: scale(0.8);
+}
+
+/* 色板 */
+.colorDiv .color,
+#pen-thick,#pen-medium,#pen-fine{
+  width: 35px;
+  height: 35px;
+  background-color: whitesmoke;
+  border-radius: 30%;
+  margin: 5px 0;
+  position: relative;
+  border: 2px rgba(0,0,0,0) solid;
+  transition: all 0.5s;
+}
+.colorDiv .color-active{
+  border: 2px rgba(0,0,0,0.5) solid;
+}
+.color .in{
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  position: absolute;
+  top: 6.5px;
+  left: 6.5px;
+}
+
+/* 画笔宽度区域定位 */
+.pen-width{
+  position: fixed;
+  top: 3px;
+  right: 0;
+  transform: scale(0.8);
+}
+
+.pen-width .active{
+  box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4);
+}
+
+
+/*
+  画笔颜色、背景颜色
+  画笔粗细，橡皮擦粗细
+*/

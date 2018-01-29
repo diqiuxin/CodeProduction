@@ -1,71 +1,223 @@
 const canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
-const hb = document.getElementById('hb');
+const pen = document.getElementById('pen');
 const eraser = document.getElementById('eraser');
-let boolean = false,hbEraser = "hb";
+const deletes = document.getElementById('delete');
+const download = document.getElementById('download');
+const penThick = document.getElementById('pen-thick');
+const penMedium = document.getElementById('pen-medium');
+const penFine = document.getElementById('pen-fine');
+let boolean = false,penEraser = "pen";
+let penColor = "red" , eraserColor = "#999";
+let penLineWidth = 12;
 canvasResize();
 
+//画笔色块
+const ColorDiv = document.getElementsByClassName("colorDiv")[0];
+const colorData = ['red','blue','black','yellow'];
+
+//生成画笔的多种颜色
+for (const value of colorData) {
+  Colors(value);
+}
+
+//设备尺寸实时检测自适应
 window.onresize = function(event){
    canvasResize();
 }
 
+//事件检测(备用块)
+// console.log(canvas.onmousedown);   
+// console.log(canvas.ontouchstart);
+// "null" 代表支持此事件，事件未触发
+// "undefiend" 代表不支持此事件
+
+//鼠标支持
 canvas.onmousedown = function(event){
   boolean = true;
-  let x = event.clientX;
-  let y = event.clientY;
+  let client = mouseXY(event);
+  start(client.x,client.y);
+}
+canvas.onmousemove = function(event){
+  if(boolean){
+    let client = mouseXY(event);
+    move(client.x,client.y);
+  }
+}
+canvas.onmouseup = function(event){
+  boolean = false;
+  let client = mouseXY(event);
+  end(client.x,client.y); 
+}
+
+
+//触屏支持
+canvas.ontouchstart = function(event){
+  boolean = true;
+  let client = touchXY(event);
+  start(client.x,client.y);
+}
+canvas.ontouchmove = function(event){
+  if(boolean){
+    let client = touchXY(event);
+    move(client.x,client.y);
+  }
+}
+canvas.ontouchend = function(event){
+  boolean = false;
+  let client = touchXY(event);
+  end(client.x,client.y); 
+}
+
+//点击事件的监听
+pen.onclick = function(){
+  penEraser = "pen";
+  //pen.className.baseVal     //调取SVG中的元素class属性
+  clear();
+  pen.className.baseVal = "active";
+}
+eraser.onclick = function(){
+  penEraser = "eraser";
+  clear();
+  eraser.className.baseVal = "active";
+}
+deletes.onclick = function(){
+  clear();
+  deletes.className.baseVal = "active";
+  // canvasResize();    两者都可以实现清空窗口
+  context.clearRect(0,0,canvas.width,canvas.height);
+}
+download.onclick = function(){
+  clear();
+  download.className.baseVal = "active";
+  downloadImage();
+}
+penThick.onclick = function(){
+  clearPen();
+  penThick.className.baseVal = "active";
+  penLineWidth = 24;
+}
+penMedium.onclick = function(){
+  clearPen();
+  penMedium.className.baseVal = "active";
+  penLineWidth = 12;
+}
+penFine.onclick = function(){
+  clearPen();
+  penFine.className.baseVal = "active";
+  penLineWidth = 6;
+}
+
+//图片下载
+function downloadImage(){
+  let url = canvas.toDataURL("image/jpg");
+  let a = document.createElement("a");
+  document.body.appendChild(a);
+  a.href = url;
+  a.download = prompt("为你的画起个名字 ");
+  a.target = "_blank";
+  a.click();
+}
+
+// 清理上边图标的选中状态
+function clear(){
+  pen.className.baseVal = "";
+  eraser.className.baseVal = "";
+  deletes.className.baseVal = "";
+  download.className.baseVal = "";
+}
+function clearPen(){
+  penThick.className.baseVal = "";
+  penMedium.className.baseVal = "";
+  penFine.className.baseVal = "";
+}
+resetPencolor(penColor);
+function resetPencolor(_color){
+  penThick.style.fill = _color;
+  penMedium.style.fill = _color;
+  penFine.style.fill = _color;
+}
+
+//模拟画笔动作
+function start(x,y){
+  PenEraser(penColor,eraserColor);
   arc(x,y);
-  console.log(hbEraser);
-  HbEraser("stroke");
-  context.lineWidth = 10;
+  context.lineWidth = penLineWidth;
   context.beginPath();
   context.moveTo(x,y);
 }
-
-canvas.onmousemove = function(event){
-  if(boolean){
-    let x = event.clientX;
-    let y = event.clientY;
-    context.lineTo(x,y);
-    context.stroke();
-    context.beginPath();
-    context.moveTo(x,y);
-  }
-}
-
-canvas.onmouseup = function(event){
+function move(x,y){ 
+  context.lineTo(x,y);
   context.stroke();
-  let x = event.clientX;
-  let y = event.clientY; 
+  context.beginPath();
+  context.moveTo(x,y);
+}
+function end(x,y){
+  context.stroke();
   arc(x,y);
-  boolean = false;
 }
 
-hb.onclick = function(){
-  hbEraser = "hb";
-}
-eraser.onclick = function(){
-  hbEraser = "eraser";
-}
-
-function HbEraser(fillStroke){
-  if(hbEraser == "hb"){
-    context[`${fillStroke}Style`] = 'red';
+//画笔与橡皮餐
+function PenEraser(_penColor,_eraserColor){
+  if(penEraser == "pen"){
+    context.fillStyle = _penColor;
+    context.strokeStyle = _penColor;
   }else{
-    context[`${fillStroke}Style`] = '#999';
+    context.fillStyle= _eraserColor;
+    context.strokeStyle= _eraserColor;
   }
 }
 
+//获取坐标值并返回
+function touchXY(_event){
+  return {
+    // x: _event.touches[0].clientX,   //这种事件在 ontouchend 时坐标为空
+    // y: _event.touches[0].clientY
+    x: _event.changedTouches[0].clientX,
+    y: _event.changedTouches[0].clientY
+  }
+}
+function mouseXY(_event){
+  return {
+    x: _event.clientX,
+    y: _event.clientY
+  }
+}
+
+//画实心圆
 function arc(x,y){
-  HbEraser("fill");
   context.beginPath();
-  context.arc(x,y,5,0,Math.PI*2);
+  context.arc(x,y,penLineWidth/2,0,Math.PI*2);
   context.fill();
 }
 
+//实时更新画板的大小尺寸
 function canvasResize(){
   let pagewidth = document.documentElement.clientWidth;
   let pageheight = document.documentElement.clientHeight;
   canvas.height = pageheight;
   canvas.width = pagewidth;
+}
+
+//画笔色块
+function Colors(_color){
+  const div = document.createElement("div");
+  div.className = "color";
+  const div0 = document.createElement("div");
+  div0.className = "in";
+  div0.style.backgroundColor = _color;
+  div0.onclick = function(event){
+    penColor = event.target.style.backgroundColor;
+    //清除色块选中的状态
+    for (const ele of ColorDiv.children) {
+      ele.className = "color";
+    }
+    //显示指定色块
+    event.target.parentNode.className = "color color-active";
+    console.log(penColor);
+    resetPencolor(penColor);
+  }
+  div.appendChild(div0);
+  ColorDiv.appendChild(div);
 }
 
