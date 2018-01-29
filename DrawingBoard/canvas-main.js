@@ -26,6 +26,10 @@ window.onresize = function(event){
    canvasResize();
 }
 
+//背景初始化
+context.fillStyle = "#999";
+context.fillRect(0,0,canvas.width,canvas.height);
+
 //事件检测(备用块)
 // console.log(canvas.onmousedown);   
 // console.log(canvas.ontouchstart);
