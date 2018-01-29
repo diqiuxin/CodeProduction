@@ -118,7 +118,8 @@ function downloadImage(){
   let a = document.createElement("a");
   document.body.appendChild(a);
   a.href = url;
-  a.download = prompt("为你的画起个名字 ");
+  // a.download = prompt("为你的画起个名字 ");
+  a.download = "你的小画";
   a.target = "_blank";
   a.click();
 }
