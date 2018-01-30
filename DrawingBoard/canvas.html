@@ -31,6 +31,9 @@
     <svg id="download" class="">
         <use xlink:href="#icon-download"></use>
     </svg>
+    <svg id="help" class="">
+            <use xlink:href="#icon-help"></use>
+        </svg>
   </div>
   <div class="pen-width">
     <!-- 画笔宽度 -->
@@ -47,7 +50,43 @@
   <div class="colorDiv">
     <!-- 画笔色块区域 -->
   </div>
+  <!-- 更多色块区 -->
+  <div class="more-color">
+    <span>更多画笔色</span><br/>
+    <input id="penMoreColor" type="color"><br/>
+    <span>更多背景色</span><br/>
+    <input id="bgcMoreColor" type="color">
+  </div>
+  <a href="" download=""></a>
   <script src="./canvas-main.js"></script>
-  <script src="http://at.alicdn.com/t/font_557859_2s3uyqahdwfp3nmi.js"></script>
+  <script src="http://at.alicdn.com/t/font_557859_b9nnhvqko4siqkt9.js"></script>
+  <!-- 浏览器版本检测 -->
+  <!-- <script type="text/javascript"> 
+    var Sys = {}; 
+    var ua = navigator.userAgent.toLowerCase(); 
+    var s; 
+    (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] : 
+    (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] : 
+    (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] : 
+    (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] : 
+    (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0; 
+    //以下进行测试 
+    let str;
+    if (Sys.ie) str = ('IE: ' + Sys.ie); 
+    if (Sys.firefox) str = ('Firefox: ' + Sys.firefox); 
+    if (Sys.chrome) str = ('Chrome: ' + Sys.chrome); 
+    if (Sys.opera) str = ('Opera: ' + Sys.opera); 
+    if (Sys.safari) str = ('Safari: ' + Sys.safari); 
+    alert(str);
+  </script>  -->
 </body>
 </html>
+<!-- 
+  1.局域网调试 ok
+  2.手机端不能保存 no 兼容性
+  3.整理笔记   
+  4.写工具说明书  ok
+  5.还有一个帮助功能 ok
+  6.代码优化  ok
+  7.手势命令 no
+ -->

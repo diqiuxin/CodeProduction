@@ -4,6 +4,7 @@ const pen = document.getElementById('pen');
 const eraser = document.getElementById('eraser');
 const deletes = document.getElementById('delete');
 const download = document.getElementById('download');
+const help = document.getElementById('help');
 const penThick = document.getElementById('pen-thick');
 const penMedium = document.getElementById('pen-medium');
 const penFine = document.getElementById('pen-fine');
@@ -14,7 +15,7 @@ canvasResize();
 
 //画笔色块
 const ColorDiv = document.getElementsByClassName("colorDiv")[0];
-const colorData = ['red','blue','black','yellow'];
+const colorData = ['red','blue','black','yellow','rebeccapurple','green'];
 
 //生成画笔的多种颜色
 for (const value of colorData) {
@@ -27,8 +28,16 @@ window.onresize = function(event){
 }
 
 //背景初始化
-context.fillStyle = "#999";
-context.fillRect(0,0,canvas.width,canvas.height);
+bgcInit();
+function bgcInit(color = '#999'){
+  context.fillStyle = color;
+  context.fillRect(0,0,canvas.width,canvas.height);
+}
+
+
+//检测浏览器内核版本
+// const v = navigator.userAgent.toLowerCase(); 
+// alert(v);
 
 //事件检测(备用块)
 // console.log(canvas.onmousedown);   
@@ -96,7 +105,15 @@ download.onclick = function(){
   download.className.baseVal = "active";
   downloadImage();
 }
-penThick.onclick = function(){
+help.onclick = function(){
+  alert(`
+    下载功能由于手机浏览器兼容性问题，暂不能使用，PC端可正常使用。
+    可用手机截屏来保存。
+    如果想定制增添新的功能，可留言QQ：501993589。
+  `);
+}
+penThick.onclick = function(e){
+  console.log(e);
   clearPen();
   penThick.className.baseVal = "active";
   penLineWidth = 24;
@@ -118,6 +135,7 @@ function downloadImage(){
   let a = document.createElement("a");
   document.body.appendChild(a);
   a.href = url;
+  // console.log(url);
   a.download = prompt("为你的画起个名字 ");
   a.target = "_blank";
   a.click();
@@ -223,5 +241,38 @@ function Colors(_color){
   }
   div.appendChild(div0);
   ColorDiv.appendChild(div);
+}
+
+// 更多颜色选择
+const penMoreColor = document.getElementById('penMoreColor');
+const bgcMoreColor = document.getElementById('bgcMoreColor');
+penMoreColor.onchange = function(event){
+  let color = event.target.value;
+  // console.log(color);
+  // console.log(event);
+  penColor = color;
+  resetPencolor(penColor);
+}
+bgcMoreColor.onchange = function(event){
+  let color = event.target.value;
+  bgcInit(color);
+}
+
+// 补充区
+// ColorDiv.innerHTML += `
+// <div class="more-color">
+//   <span>更多画笔色</span><br/>
+//   <input id="penMoreColor" type="color"><br/>
+//   <span>更多背景色</span><br/>
+//   <input id="bgcMoreColor" type="color">
+// </div>
+// `;
+
+// 未使用
+function CreateEle(eleName,id,className){
+  const ele = document.createElement(eleName);
+  if(id != "") ele.id = id;
+  if(className != "") ele.className = className;
+  return ele;
 }
 
