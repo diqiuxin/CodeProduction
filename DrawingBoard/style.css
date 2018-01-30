@@ -92,6 +92,16 @@ body{
   font-size: 5px;
 }
 
+/* 图片中下载 */
+.imgDownload{
+  width: 10vh;
+  height: 10vh;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  border: 2px whitesmoke solid;
+  border-radius: 20%;
+}
 
 /*
   画笔颜色、背景颜色

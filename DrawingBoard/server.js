@@ -3,6 +3,9 @@ var url = require("url");
 var fs = require("fs");
 var path = require("path");
 
+let IP = "192.168.43.253";
+let port = "8088";
+
 http.createServer(function(req,res){
 	//得到用户的路径
 	var pathname = url.parse(req.url).pathname;
@@ -30,8 +33,7 @@ http.createServer(function(req,res){
 		res.writeHead(200,{"Content-type":mime});
 		res.end(data);
 	});
-	let IP = "127.0.0.1";
-	let port = "8088";
+
 	console.log(`服务器${IP}:${port}已经打开`);
 }).listen(port,IP);  //局域网IP地址
 

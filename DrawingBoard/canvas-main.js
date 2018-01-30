@@ -11,6 +11,7 @@ const penFine = document.getElementById('pen-fine');
 let boolean = false,penEraser = "pen";
 let penColor = "red" , eraserColor = "#999";
 let penLineWidth = 12;
+let pcORphone;
 canvasResize();
 
 //画笔色块
@@ -44,6 +45,14 @@ function bgcInit(color = '#999'){
 // console.log(canvas.ontouchstart);
 // "null" 代表支持此事件，事件未触发
 // "undefiend" 代表不支持此事件
+
+console.log(canvas.ontouchstart);
+if(canvas.ontouchstart === undefined){
+  pcORphone = 'PC';
+}else{
+  pcORphone = 'PHONE';
+}
+console.log(pcORphone);
 
 //鼠标支持
 canvas.onmousedown = function(event){
@@ -107,8 +116,6 @@ download.onclick = function(){
 }
 help.onclick = function(){
   alert(`
-    下载功能由于手机浏览器兼容性问题，暂不能使用，PC端可正常使用。
-    可用手机截屏来保存。
     如果想定制增添新的功能，可留言QQ：501993589。
   `);
 }
@@ -132,13 +139,18 @@ penFine.onclick = function(){
 //图片下载
 function downloadImage(){
   let url = canvas.toDataURL("image/jpg");
-  let a = document.createElement("a");
-  document.body.appendChild(a);
-  a.href = url;
-  // console.log(url);
-  a.download = prompt("为你的画起个名字 ");
-  a.target = "_blank";
-  a.click();
+  console.log(pcORphone);
+  if(pcORphone == 'PC'){
+    let a = document.createElement("a");
+    document.body.appendChild(a);
+    a.href = url;
+    a.download = prompt("为你的画起个名字 ");
+    a.click();
+  }
+  let img = document.createElement("img");
+  img.src = url;
+  img.className = 'imgDownload'
+  document.body.appendChild(img);
 }
 
 // 清理上边图标的选中状态
