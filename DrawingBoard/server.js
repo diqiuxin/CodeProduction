@@ -30,8 +30,10 @@ http.createServer(function(req,res){
 		res.writeHead(200,{"Content-type":mime});
 		res.end(data);
 	});
-
-}).listen(8088,"127.0.0.1");  //局域网IP地址
+	let IP = "127.0.0.1";
+	let port = "8088";
+	console.log(`服务器${IP}:${port}已经打开`);
+}).listen(port,IP);  //局域网IP地址
 
 function getMime(extname){
 	switch(extname){

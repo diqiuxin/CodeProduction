@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvas");
-let context = canvas.getContext("2d");
+const context = canvas.getContext("2d");
 const pen = document.getElementById('pen');
 const eraser = document.getElementById('eraser');
 const deletes = document.getElementById('delete');
@@ -276,3 +276,20 @@ function CreateEle(eleName,id,className){
   return ele;
 }
 
+// //浏览器的版本检测
+// var Sys = {}; 
+// var ua = navigator.userAgent.toLowerCase(); 
+// var s; 
+// (s = ua.match(/msie ([\d.]+)/)) ? Sys.ie = s[1] : 
+// (s = ua.match(/firefox\/([\d.]+)/)) ? Sys.firefox = s[1] : 
+// (s = ua.match(/chrome\/([\d.]+)/)) ? Sys.chrome = s[1] : 
+// (s = ua.match(/opera.([\d.]+)/)) ? Sys.opera = s[1] : 
+// (s = ua.match(/version\/([\d.]+).*safari/)) ? Sys.safari = s[1] : 0; 
+// //以下进行测试 
+// let str;
+// if (Sys.ie) str = ('IE: ' + Sys.ie); 
+// if (Sys.firefox) str = ('Firefox: ' + Sys.firefox); 
+// if (Sys.chrome) str = ('Chrome: ' + Sys.chrome); 
+// if (Sys.opera) str = ('Opera: ' + Sys.opera); 
+// if (Sys.safari) str = ('Safari: ' + Sys.safari); 
+// alert(str);
