@@ -116,6 +116,8 @@ download.onclick = function(){
 }
 help.onclick = function(){
   alert(`
+    手机或平板会暂存到屏幕左下角，长按可保存到本地。
+    PC端直接下载到本地。
     如果想定制增添新的功能，可留言QQ：501993589。
   `);
 }
