@@ -12,6 +12,7 @@ let boolean = false,penEraser = "pen";
 let penColor = "red" , eraserColor = "#999";
 let penLineWidth = 12;
 let pcORphone;
+let Space;
 canvasResize();
 
 //画笔色块
@@ -72,6 +73,28 @@ canvas.onmouseup = function(event){
   end(client.x,client.y); 
 }
 
+// 笔记本特殊支持
+let Space = false;
+document.onkeypress = function(event){
+  let keyCode = event.code;
+  let x0 , y0;
+  Space = !(Space);
+  canvas.onmousemove = function(_event){
+    let client = mouseXY(_event);
+    let x = client.x , y = client.y;
+    if(keyCode == 'Space' && Space == true){
+      PenEraser(penColor,eraserColor);
+      if(x0 != 'undefined') arc(x,y);
+      context.lineWidth = penLineWidth;
+      context.beginPath();
+      if(x0 != 'undefined') context.moveTo(x0,y0);
+      context.lineTo(x,y);
+      context.stroke();
+      arc(x,y);
+    }
+    x0 = x , y0 = y;
+  }
+}
 
 //触屏支持
 canvas.ontouchstart = function(event){
@@ -118,6 +141,7 @@ help.onclick = function(){
   alert(`
     手机或平板会暂存到屏幕左下角，长按可保存到本地。
     PC端直接下载到本地。
+    支持笔记本触摸板手写（空格键开启与关闭触摸板手写功能）
     如果想定制增添新的功能，可留言QQ：501993589。
   `);
 }
@@ -185,6 +209,7 @@ function start(x,y){
 function move(x,y){ 
   context.lineTo(x,y);
   context.stroke();
+  arc(x,y);
   context.beginPath();
   context.moveTo(x,y);
 }
