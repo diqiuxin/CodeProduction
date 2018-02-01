@@ -128,8 +128,9 @@ eraser.onclick = function(){
 deletes.onclick = function(){
   clear();
   deletes.className.baseVal = "active";
-  // canvasResize();    两者都可以实现清空窗口
+  // canvasResize();    两者都可以实现清空窗口，直接返回页面初次加载的状态
   context.clearRect(0,0,canvas.width,canvas.height);
+  bgcInit(eraserColor);
 }
 download.onclick = function(){
   clear();
@@ -294,6 +295,7 @@ penMoreColor.onchange = function(event){
 bgcMoreColor.onchange = function(event){
   let color = event.target.value;
   bgcInit(color);
+  eraserColor = color;
 }
 
 // 补充区
