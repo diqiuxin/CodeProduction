@@ -12,7 +12,7 @@ let boolean = false,penEraser = "pen";
 let penColor = "red" , eraserColor = "#999";
 let penLineWidth = 12;
 let pcORphone;
-let Space;
+let Space = false;
 canvasResize();
 
 //画笔色块
@@ -74,7 +74,6 @@ canvas.onmouseup = function(event){
 }
 
 // 笔记本特殊支持
-let Space = false;
 document.onkeypress = function(event){
   let keyCode = event.code;
   let x0 , y0;
