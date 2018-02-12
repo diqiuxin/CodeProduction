@@ -34,3 +34,4 @@ function openKeyUrl(_key){
   // localtion.href = "http://" + website;
   window.open("http://"+_website , "_blank")
 }
+
