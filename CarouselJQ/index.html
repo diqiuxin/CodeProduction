@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    *{margin:0; padding:0;}
+    
+    /* 修改区 */
+    .window,
+    .window img{
+      width: 500px;
+      height: 350px;
+    }
+    .window{
+      overflow: hidden;
+    }
+    .window > #imager{
+      display: flex;
+      transition: all 0.5s;
+    }
+    /* 修改区 */
+    
+    .rep{
+     display: block;
+     width: 500px;
+     margin: 0 auto;
+    }
+    #button{
+      text-align: center;
+    }
+
+    #button span{
+      display: inline-block;
+      padding: 3px 8px;
+      margin: 10px 5px;
+      border-radius: 10px;
+      background-color: teal;
+      color: whitesmoke;
+    }
+    #button span.red{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="rep">
+    <div class="window">
+      <div id="imager">
+        <img src="http://img.bizhi.sogou.com/images/2014/02/18/523326.jpg" alt="imager_1">
+        <img src="http://imgstore.cdn.sogou.com/app/a/100540002/667149.jpg" alt="imager_2">
+        <img src="http://s6.sinaimg.cn/mw690/0065KH43zy6TSjw1r5b45&690" alt="imager_3">
+        <img src="http://img.bizhi.sogou.com/images/2013/05/15/338856.jpg" alt="imager_4">
+        <img src="http://img2.imgtn.bdimg.com/it/u=1654954329,1157106473&fm=27&gp=0.jpg" alt="imager_5">
+      </div>
+    </div>
+    <div id="button">
+      <span>图片1</span>
+      <span>图片2</span>
+      <span>图片3</span>
+      <span>图片4</span>
+      <span>图片5</span>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
