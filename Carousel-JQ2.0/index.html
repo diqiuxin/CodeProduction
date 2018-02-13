@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jQuery 无缝轮播</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    *{margin: 0; padding: 0;}
+    .rep{width: 500px;  margin: 0 auto; }
+    .rep .window , 
+    .rep .window .imager > img{width: 500px; height: 340px;}
+    .rep .window{ overflow: hidden; }
+    .rep .window .imager{ display: flex; position: relative; }
+    .rep .window .imager > img{
+      position: absolute;
+      left: 0;
+      transition: all 0.8s;
+      /*此处时间一定要小于定时器时间 */ 
+    }
+    /* 状态CSS */
+    .rep .window .imager > img.enter{
+      transform: translateX(100%);
+    }
+    .rep .window .imager > img.current{
+      transform: translateX(0);
+      z-index: 1;
+    }
+    .rep .window .imager > img.leave{
+      transform: translateX(-100%);
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="rep">
+    <div class="window">
+      <div class="imager">
+        <img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=811a803ba118972bb73708898ea411fc/d50735fae6cd7b89cf5d86ac052442a7d9330eef.jpg" alt="图片">
+        <img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=770bd0e2f6039245b5b8e94ceffdceb7/d788d43f8794a4c2c9dbc10404f41bd5ad6e3920.jpg" alt="图片">
+        <img src="http://pic32.photophoto.cn/20140926/0035035944874740_b.jpg" alt="图片">
+        <img src="http://img2.imgtn.bdimg.com/it/u=3995552242,647724121&fm=214&gp=0.jpg" alt="图片">
+      </div>
+    </div> 
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
