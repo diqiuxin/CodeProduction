@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>无缝的轮播</title>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <style>
+    *{margin:0;padding:0;}
+    *{box-sizing: border-box;}
+
+    .window{
+      width: 400px;
+      height: 300px;
+      margin: 20px auto;
+      overflow: hidden;
+    }
+    .images{
+      display: flex;
+      transition: all 1s;
+    }
+    .images > img{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="window">
+      <div id="slides" class="images">
+        <img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=811a803ba118972bb73708898ea411fc/d50735fae6cd7b89cf5d86ac052442a7d9330eef.jpg" alt="图片" width="400" height="300">
+        <img src="http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=770bd0e2f6039245b5b8e94ceffdceb7/d788d43f8794a4c2c9dbc10404f41bd5ad6e3920.jpg" alt="图片" width="400" height="300">
+        <img src="http://pic32.photophoto.cn/20140926/0035035944874740_b.jpg" alt="图片" width="400" height="300">
+        <img src="http://img2.imgtn.bdimg.com/it/u=3995552242,647724121&fm=214&gp=0.jpg" alt="图片" width="400" height="300">
+      </div>
+    </div>
+    <div id="controls" style="text-align:center;">
+      <button id="previous">上一张</button>
+      <button id="next">下一张</button>
+    </div>
+    <div id=buttonWrapper style="text-align:center;">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>4</button>
+    </div>
+  </div>
+  <script src="./main.js"></script>
+</body>
+</html>
