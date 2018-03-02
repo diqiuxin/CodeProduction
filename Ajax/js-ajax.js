@@ -1,4 +1,4 @@
-// JS原生ajax v1.0
+// JS原生ajax JSON v1.0
 let button = document.getElementById('button');
 
 button.addEventListener('click',(event)=>{
@@ -23,11 +23,11 @@ button.addEventListener('click',(event)=>{
   // 添加非同源的绝对路径时，需要在访问的服务器端添加: 
   // response.setHeader('Access-Control-Allow-Origin', '协议+主机名+端口号')
   xhr.send(null);
-  // ajax VS js
-  // ajax 的数据类型：string number object array null true false
-  // ajax 没有undefined function symbol(js新出的没来的及抄)
+  // JSON VS js
+  // JSON 的数据类型：string number object array null true false
+  // JSON 没有undefined function symbol(js新出的没来的及抄)
   // string 必须要加双引号
-  // ajax 是一门新的语言，是抄袭js的
+  // JSON 是一门新的语言，是抄袭js的
   // .send() 表示发送的是报文的第四部分
 
   // 后台永远只是返回字符串（比如返回符合JSON语法的字符串文件）

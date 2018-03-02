@@ -1,0 +1,40 @@
+
+*{
+  box-sizing: border-box;
+}
+#code,#content{
+  height: 100vh;
+  overflow: hidden;
+}
+.token.comment, .token.prolog, .token.doctype, .token.cdata ,
+.token.selector, .token.attr-name, .token.string, .token.char, .token.builtin, .token.inserted ,
+.token.punctuation ,
+.token.property, .token.tag, .token.boolean, .token.number, .token.constant, .token.symbol, .token.deleted {
+  color: black;
+}
+#paper{
+  padding: 16px;
+  font-size: 16px;
+}
+#content{
+  width: 100%;
+  height: 100%;
+}
+#paper>.html{
+  background: white;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  overflow: auto;
+}
+#code{
+  box-shadow:inset 0 0 70px  rgba(0,0,0,0);
+}
+@keyframes breathingLight{
+  0%{
+    box-shadow:inset 0 0 70px rgba(0,0,0,0.8)
+  }
+  100%{
+    box-shadow:inset 0 0 70px rgba(0,0,0,0.1)
+  }
+}
